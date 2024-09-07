@@ -5,13 +5,22 @@ require("mason-lspconfig").setup({
         function(server_name)
             require('lspconfig')[server_name].setup({
                 on_attach = function(client, bufnr)
-                    -- Отключаем встроенное форматирование LSP для tsserver, если это tsserver
+                    -- Отключаем встроенное форматирование LSP для ts_ls, если это tsserver
                     if server_name == "tsserver" then
                         client.resolved_capabilities.document_formatting = false
                     end
                 end,
             })
         end,
+        	["tsserver"] = function()
+			require("lspconfig").ts_ls.setup({
+				settings = {
+					completions = {
+						completeFunctionCalls = true,
+					},
+				},
+			})
+		end,
     },
 })
 
@@ -32,4 +41,5 @@ null_ls.setup({
 })
 
 -- Автоформатирование при сохранении файла
-vim.cmd [[autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx, *.scss, *.css lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx, lua vim.lsp.buf.format()]]
+

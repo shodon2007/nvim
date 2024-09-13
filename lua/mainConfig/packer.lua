@@ -32,4 +32,14 @@ return require('packer').startup(function(use)
 
     use 'jose-elias-alvarez/null-ls.nvim' -- Null-ls для интеграции форматтеров и линтеров
     use 'jayp0521/mason-null-ls.nvim'    -- Интеграция Mason с null-ls
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use({
+	"Pocco81/true-zen.nvim",
+	config = function()
+		 require("true-zen").setup {
+			-- your config goes here
+			-- or just leave it empty :)
+		 }
+	end,
+})
 end)

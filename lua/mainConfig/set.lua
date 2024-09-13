@@ -31,3 +31,7 @@ vim.opt.updatetime=50
 vim.opt.colorcolumn="80"
 
 vim.g.mapleader=" "
+vim.o.fillchars = 'vert: ,horiz: ,horizup: ,horizdown: ,vertleft: ,vertright: '
+
+
+vim.opt.colorcolumn = ""

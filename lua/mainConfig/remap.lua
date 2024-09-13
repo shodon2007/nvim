@@ -26,7 +26,7 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>A", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
@@ -52,7 +52,7 @@ local function is_terminal_on_right()
     if buftype == "terminal" then
         return true
     else
-        vim.cmd("wincmd h")  -- Возвращаем фокус обратно
+        vim.cmd("wincmd h") -- Возвращаем фокус обратно
         return false
     end
 end
@@ -73,9 +73,8 @@ local function run_node_and_open_terminal()
         -- Если нет, открываем новый терминал справа
         vim.cmd("vsplit | wincmd l | terminal")
         vim.fn.chansend(vim.b.terminal_job_id, "node " .. relative_path .. "\n")
-
     end
-    vim.cmd("wincmd h")  -- Возвращаем фокус в левое окно
+    vim.cmd("wincmd h") -- Возвращаем фокус в левое окно
 end
 
-vim.keymap.set("n", "<leader>N", run_node_and_open_terminal, {noremap=true, silent=true})
+vim.keymap.set("n", "<leader>N", run_node_and_open_terminal, { noremap = true, silent = true })

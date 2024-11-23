@@ -4,6 +4,10 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer может управлять сам собой
     use 'wbthomason/packer.nvim'
+    use 'zaldih/themery.nvim'
+use { "ellisonleao/gruvbox.nvim" }
+
+    use 'brenoprata10/nvim-highlight-colors'
 
     -- Пример установки плагина
     use {

@@ -11,7 +11,7 @@ require("mason-lspconfig").setup({
                 end,
             })
         end,
-        	["tsserver"] = function()
+        	["ts_ls"] = function()
 			require("lspconfig").ts_ls.setup({
 				settings = {
 					completions = {

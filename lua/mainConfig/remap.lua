@@ -37,7 +37,8 @@ end)
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-
+vim.api.nvim_set_keymap('n', 'g]', ':tabnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'g[', ':tabprevious<CR>', { noremap = true, silent = true })
 
 -- Функция для проверки, является ли окно справа терминалом
 local function is_terminal_on_right()

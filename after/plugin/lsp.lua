@@ -1,4 +1,6 @@
 local lsp_zero = require('lsp-zero')
+local luasnip = require('luasnip')
+
 
 local lsp_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
@@ -25,11 +27,16 @@ local cmp = require('cmp')
 cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
+        { name = 'luasnip' }, -- Подключаем LuaSnip
+        { name = 'buffer' },
+        { name = 'path' },
     },
     snippet = {
         expand = function(args)
             -- You need Neovim v0.10 to use vim.snippet
-            vim.snippet.expand(args.body)
+            -- vim.snippet.expand(args.body)
+            luasnip.lsp_expand(args.body) -- Расширение сниппетов
+
         end,
     },
     mapping = cmp.mapping.preset.insert({

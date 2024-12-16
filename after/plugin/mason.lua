@@ -11,15 +11,30 @@ require("mason-lspconfig").setup({
                 end,
             })
         end,
-        	["ts_ls"] = function()
-			require("lspconfig").ts_ls.setup({
-				settings = {
-					completions = {
-						completeFunctionCalls = true,
-					},
-				},
-			})
-		end,
+        ["ts_ls"] = function()
+            require("lspconfig").ts_ls.setup({
+                settings = {
+                    completions = {
+                        completeFunctionCalls = true,
+                    },
+                },
+            })
+        end,
+        ["lua_ls"] = function()
+            require("lspconfig").lua_ls.setup({
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            -- Указываем, что vim является глобальной переменной
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                    },
+                },
+            })
+        end,
     },
 })
 
@@ -41,4 +56,3 @@ null_ls.setup({
 
 -- Автоформатирование при сохранении файла
 vim.cmd [[autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx, lua vim.lsp.buf.format()]]
-

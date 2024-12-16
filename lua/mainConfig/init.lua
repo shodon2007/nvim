@@ -1,3 +1,4 @@
+require('mainConfig.keys')
 require('mainConfig.packer')
 require('mainConfig.remap')
 require('mainConfig.set')

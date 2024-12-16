@@ -1,6 +1,14 @@
 vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
+    use {
+        'mhinz/vim-startify',
+        config = function()
+            vim.g.startify_session_dir = vim.fn.stdpath('data') .. '/sessions'
+            vim.g.startify_session_autoload = 1
+            vim.g.startify_session_persistence = 1
+        end
+    }
+    use { "scottmckendry/cyberdream.nvim" }
     use 'j-hui/fidget.nvim'
     use({
         "L3MON4D3/LuaSnip",
@@ -43,10 +51,6 @@ return require('packer').startup(function(use)
     })
     use({
         "Pocco81/true-zen.nvim",
-        config = function()
-            require("true-zen").setup {
-            }
-        end,
     })
     use({
         'barrett-ruth/live-server.nvim',
@@ -56,20 +60,4 @@ return require('packer').startup(function(use)
     }
     )
     use "terrortylor/nvim-comment"
-    use {
-        "ahmedkhalf/project.nvim",
-        config = function()
-            require("project_nvim").setup {
-                manual_mode = false,
-                detection_methods = { "lsp", "pattern" },
-                patterns = { "package.json" },
-                ignore_lsp = {},
-                exclude_dirs = {},
-                show_hidden = false,
-                silent_chdir = true,
-                scope_chdir = 'global',
-                datapath = vim.fn.stdpath("data"),
-            }
-        end
-    }
 end)

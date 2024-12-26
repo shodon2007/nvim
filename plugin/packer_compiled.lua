@@ -99,11 +99,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
-  ["friendly-snippets"] = {
-    loaded = true,
-    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
-  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox.nvim",
@@ -190,12 +185,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["project.nvim"] = {
-    config = { "\27LJ\2\næ\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0024\3\0\0=\3\b\0024\3\0\0=\3\t\0026\3\n\0009\3\v\0039\3\f\3'\5\r\0B\3\2\2=\3\14\2B\0\2\1K\0\1\0\rdatapath\tdata\fstdpath\afn\bvim\17exclude_dirs\15ignore_lsp\rpatterns\1\2\0\0\17package.json\22detection_methods\1\3\0\0\blsp\fpattern\1\0\t\rdatapath\0\16scope_chdir\vglobal\17silent_chdir\2\16show_hidden\1\17exclude_dirs\0\15ignore_lsp\0\rpatterns\0\22detection_methods\0\16manual_mode\1\nsetup\17project_nvim\frequire\0" },
-    loaded = true,
-    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\project.nvim",
-    url = "https://github.com/ahmedkhalf/project.nvim"
-  },
   ["rose-pine"] = {
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rose-pine",
@@ -212,7 +201,6 @@ _G.packer_plugins = {
     url = "https://github.com/zaldih/themery.nvim"
   },
   ["true-zen.nvim"] = {
-    config = { "\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rtrue-zen\frequire\0" },
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\true-zen.nvim",
     url = "https://github.com/Pocco81/true-zen.nvim"
@@ -240,14 +228,6 @@ time([[Defining packer_plugins]], false)
 time([[Setup for markdown-preview.nvim]], true)
 try_loadstring("\27LJ\2\n=\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\rmarkdown\19mkdp_filetypes\6g\bvim\0", "setup", "markdown-preview.nvim")
 time([[Setup for markdown-preview.nvim]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\næ\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0024\3\0\0=\3\b\0024\3\0\0=\3\t\0026\3\n\0009\3\v\0039\3\f\3'\5\r\0B\3\2\2=\3\14\2B\0\2\1K\0\1\0\rdatapath\tdata\fstdpath\afn\bvim\17exclude_dirs\15ignore_lsp\rpatterns\1\2\0\0\17package.json\22detection_methods\1\3\0\0\blsp\fpattern\1\0\t\rdatapath\0\16scope_chdir\vglobal\17silent_chdir\2\16show_hidden\1\17exclude_dirs\0\15ignore_lsp\0\rpatterns\0\22detection_methods\0\16manual_mode\1\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
--- Config for: true-zen.nvim
-time([[Config for true-zen.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rtrue-zen\frequire\0", "config", "true-zen.nvim")
-time([[Config for true-zen.nvim]], false)
 -- Config for: vim-startify
 time([[Config for vim-startify]], true)
 try_loadstring("\27LJ\2\n¿\1\0\0\4\0\t\0\0196\0\0\0009\0\1\0006\1\0\0009\1\3\0019\1\4\1'\3\5\0B\1\2\2'\2\6\0&\1\2\1=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\a\0006\0\0\0009\0\1\0)\1\1\0=\1\b\0K\0\1\0!startify_session_persistence\30startify_session_autoload\14/sessions\tdata\fstdpath\afn\25startify_session_dir\6g\bvim\0", "config", "vim-startify")

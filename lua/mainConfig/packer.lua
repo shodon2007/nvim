@@ -15,7 +15,6 @@ return require('packer').startup(function(use)
         tag = "v2.*",
         run = "make install_jsregexp"
     })
-    use 'rafamadriz/friendly-snippets'
     use 'saadparwaiz1/cmp_luasnip'
     use 'wbthomason/packer.nvim'
     use 'zaldih/themery.nvim'

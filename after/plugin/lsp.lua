@@ -5,6 +5,9 @@ local lsp_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
 
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+
+    vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<cr>', opts) -- Открыть сообщение об ошибке под курсором
+    vim.keymap.set('n', 'gq', '<cmd>lua vim.diagnostic.setloclist()<cr>', opts) -- Показать все ошибки в loclist
     vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
@@ -33,7 +36,7 @@ cmp.setup({
     snippet = {
         expand = function(args)
             vim.snippet.expand(args.body)
-            luasnip.lsp_expand(args.body)
+            -- luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({

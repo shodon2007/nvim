@@ -1,6 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+    use "b0o/incline.nvim"
+    use {
         'mhinz/vim-startify',
         config = function()
             vim.g.startify_session_dir = vim.fn.stdpath('data') .. '/sessions'

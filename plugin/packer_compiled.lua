@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
@@ -109,6 +114,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["incline.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\incline.nvim",
+    url = "https://github.com/b0o/incline.nvim"
+  },
   ["live-server.nvim"] = {
     commands = { "LiveServerStart", "LiveServerStop" },
     config = { true },
@@ -122,6 +132,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = false,
@@ -174,6 +189,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "C:\\Users\\asror\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

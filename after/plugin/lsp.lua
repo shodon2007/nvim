@@ -1,6 +1,9 @@
 local lsp_zero = require('lsp-zero')
 local luasnip = require('luasnip')
 
+luasnip.filetype_extend("javascript", {})
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local lsp_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
 

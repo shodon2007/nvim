@@ -1,5 +1,16 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
+    use "rafamadriz/friendly-snippets";
+    use { 'dsznajder/vscode-es7-javascript-react-snippets',
+        run = 'yarn install --frozen-lockfile && yarn compile'
+    }
+    use({
+        "epwalsh/pomo.nvim",
+        tag = "*",
+        requires = {
+            "rcarriga/nvim-notify",
+        },
+    })
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }

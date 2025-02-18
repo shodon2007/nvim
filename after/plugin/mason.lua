@@ -4,7 +4,6 @@ require("mason-lspconfig").setup({
         function(server_name)
             require('lspconfig')[server_name].setup({
                 on_attach = function(client, bufnr)
-                    -- Отключаем встроенное форматирование LSP для ts_ls, если это tsserver
                     if server_name == "tsserver" then
                         client.resolved_capabilities.document_formatting = false
                     end
@@ -13,6 +12,14 @@ require("mason-lspconfig").setup({
         end,
         ["ts_ls"] = function()
             require("lspconfig").ts_ls.setup({
+                root_dir = require 'lspconfig'.util.root_pattern('tsconfig.json', '.git'),
+                on_init = function(client)
+                    client.config.settings = vim.tbl_deep_extend(
+                        "force",
+                        client.config.settings,
+                        { typescript = { preferences = { importModuleSpecifier = "relative" } } }
+                    )
+                end,
                 settings = {
                     completions = {
                         completeFunctionCalls = true,

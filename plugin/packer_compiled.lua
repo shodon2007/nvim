@@ -94,6 +94,15 @@ _G.packer_plugins = {
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["curl.nvim"] = {
+    commands = { "CurlOpen" },
+    config = { "\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tcurl\frequire\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/opt/curl.nvim",
+    url = "https://github.com/oysandvik94/curl.nvim"
+  },
   ["cyberdream.nvim"] = {
     loaded = true,
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/cyberdream.nvim",
@@ -165,6 +174,16 @@ _G.packer_plugins = {
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  mimetypes = {
+    loaded = true,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/mimetypes",
+    url = "https://github.com/tami5/mimetypes"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -189,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-notify"] = {
     loaded = true,
@@ -220,6 +244,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/pomo.nvim",
     url = "https://github.com/epwalsh/pomo.nvim"
+  },
+  ["rest.nvim"] = {
+    loaded = true,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/rest.nvim",
+    url = "https://github.com/rest-nvim/rest.nvim"
   },
   ["rose-pine"] = {
     loaded = true,
@@ -261,6 +290,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/vscode-es7-javascript-react-snippets",
     url = "https://github.com/dsznajder/vscode-es7-javascript-react-snippets"
+  },
+  xml2lua = {
+    loaded = true,
+    path = "/home/shodon2007/.local/share/nvim/site/pack/packer/start/xml2lua",
+    url = "https://github.com/megawatts/xml2lua"
   }
 }
 
@@ -276,6 +310,13 @@ time([[Config for vim-startify]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'CurlOpen', function(cmdargs)
+          require('packer.load')({'curl.nvim'}, { cmd = 'CurlOpen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'curl.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CurlOpen ', 'cmdline')
+      end})
 pcall(vim.api.nvim_create_user_command, 'LiveServerStop', function(cmdargs)
           require('packer.load')({'live-server.nvim'}, { cmd = 'LiveServerStop', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,

@@ -4,7 +4,7 @@ vim.g.startify_lists = {
 }
 vim.g.startify_session_dir = vim.fn.stdpath('data') .. '/sessions'
 
-vim.g.startify_custom_header = {  
+vim.g.startify_custom_header = {
 '  ██╗  ██╗███████╗██╗     ██╗      ██████╗     ██████╗  █████╗ ██████╗ ██╗   ██╗',
 '  ██║  ██║██╔════╝██║     ██║     ██╔═══██╗    ██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝',
 '  ███████║█████╗  ██║     ██║     ██║   ██║    ██████╔╝███████║██████╔╝ ╚████╔╝ ',

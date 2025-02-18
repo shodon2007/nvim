@@ -1,5 +1,13 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
+    use {
+        "oysandvik94/curl.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+        cmd = { "CurlOpen" },
+        config = function()
+            require("curl").setup()
+        end
+    }
     use "rafamadriz/friendly-snippets";
     use { 'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile'

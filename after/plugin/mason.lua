@@ -1,10 +1,11 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
+    ensure_installed = {"emmet_ls", "ts_ls"},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
                 on_attach = function(client, bufnr)
-                    if server_name == "tsserver" then
+                    if server_name == "ts_ls" then
                         client.resolved_capabilities.document_formatting = false
                     end
                 end,
@@ -37,6 +38,19 @@ require("mason-lspconfig").setup({
                         },
                         workspace = {
                             library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                    },
+                },
+            })
+        end,
+        ["emmet_ls"] = function()
+            require("lspconfig").emmet_ls.setup({
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                filetypes = { "html", "css", "scss", "javascriptreact", "typescriptreact", "vue", "svelte", "pug", "less", "sass" },
+                init_options = {
+                    html = {
+                        options = {
+                            ["bem.enabled"] = true,
                         },
                     },
                 },

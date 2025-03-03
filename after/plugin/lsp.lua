@@ -1,9 +1,6 @@
 local lsp_zero = require('lsp-zero')
 local luasnip = require('luasnip')
 
-luasnip.filetype_extend("javascript", {})
-require("luasnip.loaders.from_vscode").lazy_load()
-
 local lsp_attach = function(client, bufnr)
     local opts = { buffer = bufnr }
 
@@ -33,14 +30,14 @@ cmp.setup({
     sources = {
         { name = 'nvim_lsp' },
         { name = 'pyright' },
+        { name = "emmet_ls" },
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
     },
     snippet = {
         expand = function(args)
-            -- vim.snippet.expand(args.body)
-            luasnip.lsp_expand(args.body)
+            vim.snippet.expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -49,10 +46,25 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    }),
+        ['<C-l>'] = cmp.mapping.select_next_item(),
+        ['<C-h>'] = cmp.mapping.select_prev_item(),
+        ['<C-k>'] = cmp.mapping.confirm({ select = true }),    }),
     formatting = {
         format = require("nvim-highlight-colors").format
     }
+})
+
+
+lsp_zero.configure('emmet_ls', {
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    init_options = {
+        html = {
+            options = {
+                ["bem.enabled"] = true,
+            },
+        },
+    },
 })
 
 lsp_zero.setup()

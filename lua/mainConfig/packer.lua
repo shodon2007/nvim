@@ -1,30 +1,14 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
-    use {
-        "oysandvik94/curl.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
-        cmd = { "CurlOpen" },
-        config = function()
-            require("curl").setup()
-        end
-    }
+use({
+	"L3MON4D3/LuaSnip",
+	tag = "v2.*",
+	run = "make install_jsregexp"
+})
     use "rafamadriz/friendly-snippets";
     use { 'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile'
     }
-    use({
-        "epwalsh/pomo.nvim",
-        tag = "*",
-        requires = {
-            "rcarriga/nvim-notify",
-        },
-    })
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
-    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
-    use "b0o/incline.nvim"
     use {
         'mhinz/vim-startify',
         config = function()
@@ -34,7 +18,6 @@ return require('packer').startup(function(use)
         end
     }
     use { "scottmckendry/cyberdream.nvim" }
-    use 'j-hui/fidget.nvim'
     use({
         "L3MON4D3/LuaSnip",
         tag = "v2.*",
@@ -43,7 +26,6 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'wbthomason/packer.nvim'
     use 'zaldih/themery.nvim'
-    use { "ellisonleao/gruvbox.nvim" }
     use 'brenoprata10/nvim-highlight-colors'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
@@ -73,15 +55,5 @@ return require('packer').startup(function(use)
         end,
         ft = { "markdown" },
     })
-    use({
-        "Pocco81/true-zen.nvim",
-    })
-    use({
-        'barrett-ruth/live-server.nvim',
-        build = 'pnpm add -g live-server',
-        cmd = { 'LiveServerStart', 'LiveServerStop' },
-        config = true
-    }
-    )
     use "terrortylor/nvim-comment"
 end)

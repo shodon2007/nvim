@@ -1,10 +1,11 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
-use({
-	"L3MON4D3/LuaSnip",
-	tag = "v2.*",
-	run = "make install_jsregexp"
-})
+    use 'Mofiqul/dracula.nvim';
+    use({
+	    "L3MON4D3/LuaSnip",
+	    tag = "v2.*",
+	    run = "make install_jsregexp"
+    });
     use "rafamadriz/friendly-snippets";
     use { 'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile'
@@ -18,6 +19,12 @@ use({
         end
     }
     use { "scottmckendry/cyberdream.nvim" }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+    use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+    use "b0o/incline.nvim"
     use({
         "L3MON4D3/LuaSnip",
         tag = "v2.*",
@@ -40,20 +47,8 @@ use({
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
     })
-    use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' })
     use({ 'neovim/nvim-lspconfig' })
     use({ 'hrsh7th/nvim-cmp' })
     use({ 'hrsh7th/cmp-nvim-lsp' })
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'jayp0521/mason-null-ls.nvim'
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function()
-            vim.g.mkdp_filetypes = {
-                "markdown" }
-        end,
-        ft = { "markdown" },
-    })
     use "terrortylor/nvim-comment"
 end)

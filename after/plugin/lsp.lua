@@ -1,43 +1,70 @@
-local lsp_zero = require('lsp-zero')
-local luasnip = require('luasnip')
-
-local lsp_attach = function(client, bufnr)
-    local opts = { buffer = bufnr }
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-
-    vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<cr>', opts) -- Открыть сообщение об ошибке под курсором
-    vim.keymap.set('n', 'gq', '<cmd>lua vim.diagnostic.setloclist()<cr>', opts) -- Показать все ошибки в loclist
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-end
-
-lsp_zero.extend_lspconfig({
-    sign_text = true,
-    lsp_attach = lsp_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- =====================
+-- Mason + LSP Setup
+-- =====================
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "pyright", "emmet_ls" }, -- добавь сюда свои LSP
+    automatic_installation = true,
 })
 
-local cmp = require('cmp')
-cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'pyright' },
-        { name = "emmet_ls" },
-        { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' },
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+local on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr }
+
+    local map = vim.keymap.set
+    map('n', 'K', vim.lsp.buf.hover, opts)
+    map('n', 'ge', vim.diagnostic.open_float, opts)
+    map('n', 'gq', vim.diagnostic.setloclist, opts)
+    map('n', 'gd', vim.lsp.buf.definition, opts)
+    map('n', 'gD', vim.lsp.buf.declaration, opts)
+    map('n', 'gi', vim.lsp.buf.implementation, opts)
+    map('n', 'go', vim.lsp.buf.type_definition, opts)
+    map('n', 'gr', vim.lsp.buf.references, opts)
+    map('n', 'gs', vim.lsp.buf.signature_help, opts)
+    map('n', '<F2>', vim.lsp.buf.rename, opts)
+    map({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format { async = true } end, opts)
+    map('n', '<F4>', vim.lsp.buf.code_action, opts)
+end
+
+lspconfig.emmet_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 
+        "css", 
+        "eruby", 
+        "html", 
+        "javascript", 
+        "javascriptreact", 
+        "less", 
+        "sass", 
+        "scss", 
+        "svelte", 
+        "pug", 
+        "typescriptreact", 
+        "vue" 
     },
+    init_options = {
+        html = { options = { ["bem.enabled"] = true } }
+    }
+})
+
+lspconfig.pyright.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+-- =====================
+-- nvim-cmp + snippets
+-- =====================
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+cmp.setup({
     snippet = {
         expand = function(args)
-            vim.snippet.expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -48,23 +75,15 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-l>'] = cmp.mapping.select_next_item(),
         ['<C-h>'] = cmp.mapping.select_prev_item(),
-        ['<C-k>'] = cmp.mapping.confirm({ select = true }),    }),
+        ['<C-k>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
+    },
     formatting = {
         format = require("nvim-highlight-colors").format
     }
 })
-
-
-lsp_zero.configure('emmet_ls', {
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
-    init_options = {
-        html = {
-            options = {
-                ["bem.enabled"] = true,
-            },
-        },
-    },
-})
-
-lsp_zero.setup()

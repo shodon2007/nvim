@@ -21,4 +21,5 @@ end
 --         curTheme = 1;
 --     end
 -- end);
-setTheme("cyberdream", 1, 1);
+-- setTheme("cyberdream", 1, 1);
+setTheme("dracula", 1, 1);
